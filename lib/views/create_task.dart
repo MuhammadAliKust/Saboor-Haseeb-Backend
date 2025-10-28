@@ -36,8 +36,7 @@ class _CreateTaskViewState extends State<CreateTaskView> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Description cannot be empty.")),
                       );
-                      return;
-                    }
+                      return; }
                     try {
                       isLoading = true;
                       setState(() {});

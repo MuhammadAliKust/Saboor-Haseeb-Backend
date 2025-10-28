@@ -4,9 +4,12 @@ import 'package:saboor_haseeb_backend/models/task.dart';
 class TaskServices {
   ///Create Task
   Future createTask(TaskModel model) async {
+    DocumentReference docRef = FirebaseFirestore.instance
+        .collection('taskCollection').doc();
     return await FirebaseFirestore.instance
         .collection('taskCollection')
-        .add(model.toJson());
+        .doc(docRef.id)
+        .set(model.toJson(docRef.id));
   }
 
   ///Delete Task
@@ -19,6 +22,14 @@ class TaskServices {
 
   ///Update Task
   ///Mark Task as Complete
+   Future markTaskAsComplete(TaskModel model) async {
+    return await FirebaseFirestore.instance
+        .collection('taskCollection')
+        .doc(model.docId)
+        .update({
+          'isCompleted':true
+        });
+  }
 
   ///Get All Task
   Stream<List<TaskModel>> getAllTask() {
