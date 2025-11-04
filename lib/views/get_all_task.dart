@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:saboor_haseeb_backend/models/task.dart';
 import 'package:saboor_haseeb_backend/services/task.dart';
 import 'package:saboor_haseeb_backend/views/create_task.dart';
+import 'package:saboor_haseeb_backend/views/get_all_priority.dart';
 import 'package:saboor_haseeb_backend/views/get_completed_task.dart';
 import 'package:saboor_haseeb_backend/views/get_in_completed_task.dart';
 
@@ -34,6 +35,17 @@ class GetAllTaskView extends StatelessWidget {
               );
             },
             icon: Icon(Icons.incomplete_circle),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GetAllPriorityView(),
+                ),
+              );
+            },
+            icon: Icon(Icons.category),
           ),
         ],
       ),
